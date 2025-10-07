@@ -4,17 +4,19 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 import time
 import argparse
+from webdriver_manager.chrome import ChromeDriverManager
 
 # Configure logging
 from utils.manty_logger import CustomLogger
-log_file = "youtube_extractor.log"
+log_file = "Selenium_extractor.log"
 logger = CustomLogger(log_file).get_logger()
 
-def fetch_video_links(channel_url, output_file, max_videos=300):
+def fetch_video_links(channel_url, output_file, driver_path = "C:/Windows/System32/chromedriver.exe", max_videos=300):
     # Path to your WebDriver (update with your actual path)
-    driver_path = "C:/Windows/System32/chromedriver.exe"
+    # driver_path = "C:/Windows/System32/chromedriver.exe"
     service = Service(driver_path)
     driver = webdriver.Chrome(service=service)
+    # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     try:
         driver.get(channel_url)
@@ -50,15 +52,16 @@ def fetch_video_links(channel_url, output_file, max_videos=300):
         driver.quit()
 
 
-def fetch_shorts_links(channel_url, output_file, max_shorts=300):
+def fetch_shorts_links(channel_url, output_file, driver_path = "C:/Windows/System32/chromedriver.exe", max_shorts=300):
     """
     Fetch shorts links from the given channel's shorts page.
     Expects channel_url to be the URL for the shorts section (e.g., 
     "https://www.youtube.com/channel/{channel_id}/shorts")
     """
-    driver_path = "C:/Windows/System32/chromedriver.exe"
+    # driver_path = "C:/Windows/System32/chromedriver.exe"
     service = Service(driver_path)
     driver = webdriver.Chrome(service=service)
+    # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     try:
         driver.get(channel_url)
@@ -98,15 +101,16 @@ def fetch_shorts_links(channel_url, output_file, max_shorts=300):
 
 
 
-def fetch_podcasts_links(channel_url, output_file, max_podcasts=300):
+def fetch_podcasts_links(channel_url, output_file, driver_path = "C:/Windows/System32/chromedriver.exe", max_podcasts=300):
     """
     Fetch podcasts links from the given channel's podcasts page.
     Expects channel_url to be the URL for the podcasts section (e.g.,
     "https://www.youtube.com/channel/{channel_id}/podcasts")
     """
-    driver_path = "C:/Windows/System32/chromedriver.exe"
+    # driver_path = "C:/Windows/System32/chromedriver.exe"
     service = Service(driver_path)
     driver = webdriver.Chrome(service=service)
+    # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     try:
         driver.get(channel_url)

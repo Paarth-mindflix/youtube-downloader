@@ -7,12 +7,7 @@ from pathlib import Path
 env_path = Path(".") / ".env"
 load_dotenv()
 
-# Configure logging
-from utils.manty_logger import CustomLogger
-log_file = "parallel_preprocess.log"
-logger = CustomLogger(log_file).get_logger()
-
-def upload_file_to_s3(local_file, bucket, s3_key):
+def upload_file_to_s3(local_file, bucket, s3_key, logger):
     """
     Upload a single file to an S3 bucket.
 

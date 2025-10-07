@@ -3,19 +3,21 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 import time
 import argparse
+from webdriver_manager.chrome import ChromeDriverManager
 
 # Configure logging
 from .manty_logger import CustomLogger
 log_file = "youtube_extractor.log"
 logger = CustomLogger(log_file).get_logger()
 
-def fetch_playlist_links(playlist_url, output_file, max_videos=300):
+def fetch_playlist_links(playlist_url, output_file, driver_path, max_videos=300):
     # Path to your WebDriver (update this with your WebDriver path)
-    driver_path = "C:/Windows/System32/chromedriver.exe"  # Replace with the path to your WebDriver
+    # driver_path = "C:/Windows/System32/chromedriver.exe"  # Replace with the path to your WebDriver
     service = Service(driver_path)
 
     # Set up the WebDriver
     driver = webdriver.Chrome(service=service)
+    # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     try:
         # Open the YouTube playlist page

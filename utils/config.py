@@ -25,9 +25,9 @@ class Config:
                 raise Exception(f"Missing required environment variable: {var}")
 
     # --- YouTube Configuration ---
-    MAX_RESULTS_PER_SEARCH = 50                 # maxResults per video search
-    MAX_RESULTS_RELATED = 20                    # maxResults per related video call
-    FILTER_TOP_K_FOR_RELATED = 5                # filter top N videos for related search
+    MAX_RESULTS_PER_SEARCH = 50                # maxResults per video search
+    MAX_RESULTS_RELATED = 20                   # maxResults per related video call
+    FILTER_TOP_K_FOR_RELATED = 5               # filter top N videos for related search
     ORDERS = ["relevance", "viewCount"]        # order types per keyword
     KEYWORDS_PER_RUN = 16                      # total keywords to generate
     REGION_CODE = "IN"
